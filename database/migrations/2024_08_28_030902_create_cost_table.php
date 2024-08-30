@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('costs', function (Blueprint $table) {
-            $table->id('cost_id'); // Primary key
+            $table->id('id'); // Primary key
             $table->date('cost_date');
             $table->decimal('amount', 10, 2); // Amount with 2 decimal places
             $table->text('description')->nullable(); // Description of the cost

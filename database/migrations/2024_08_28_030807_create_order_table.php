@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id('order_id'); // Primary key
-            $table->foreignId('customer_id')->constrained()->onDelete('cascade'); // Foreign key to customers table
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Foreign key to users table
+            $table->id('id'); // Primary key
+            $table->foreignId('customer_id')
+                  ->constrained()
+                  ->onDelete('cascade'); // Foreign key to customers table
+            $table->foreignId('user_id')
+                  ->constrained()
+                  ->onDelete('cascade'); // Foreign key to users table
             $table->date('order_date');
             $table->enum('status', ['Draft', 'Pending', 'Completed'])->default('Draft');
             $table->timestamps(); // created_at and updated_at columns

@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('product_id'); // Primary key
+            $table->id('id'); // Primary key
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2); // Price with 2 decimal places
             $table->integer('stock_quantity');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table
+            $table->foreignId('category_id')
+                  ->constrained('categories')
+                  ->onDelete('cascade'); // Foreign key to categories table
             $table->timestamps(); // created_at and updated_at columns
         });
     }

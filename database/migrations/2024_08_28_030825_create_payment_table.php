@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id('payment_id'); // Primary key
+            $table->id('id'); // Primary key
             $table->foreignId('invoice_id')->constrained()->onDelete('cascade'); // Foreign key to invoices table
             $table->date('payment_date');
             $table->decimal('amount_paid', 10, 2); // Amount paid with 2 decimal places
