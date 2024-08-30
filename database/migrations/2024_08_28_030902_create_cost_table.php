@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('costs', function (Blueprint $table) {
-            $table->id('id'); // Primary key
+            $table->id('cost_id'); // Primary key
             $table->date('cost_date');
             $table->decimal('amount', 10, 2); // Amount with 2 decimal places
             $table->text('description')->nullable(); // Description of the cost
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Foreign key to categories table
+            $table->foreignId('category_id')
+                  ->constrained()
+                  ->references('category_id')
+                  ->onDelete('cascade'); // Foreign key to categories table
             $table->timestamps(); // created_at and updated_at columns
         });
     }

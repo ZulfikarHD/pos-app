@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('packing_lists', function (Blueprint $table) {
-            $table->id('id'); // Primary key
-            $table->foreignId('order_id')->constrained()->onDelete('cascade'); // Foreign key to orders table
+            $table->id('packing_list_id'); // Primary key
+            $table->foreignId('order_id')
+                  ->constrained()
+                  ->references('order_id')
+                  ->onDelete('cascade'); // Foreign key to orders table
             $table->date('packing_date');
             $table->date('shipped_date')->nullable();
             $table->timestamps(); // created_at and updated_at columns

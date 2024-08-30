@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('revenues', function (Blueprint $table) {
-            $table->id('id'); // Primary key
+            $table->id('revenue_id'); // Primary key
             $table->date('revenue_date');
             $table->decimal('amount', 10, 2); // Amount with 2 decimal places
             $table->string('source'); // Source of the revenue (e.g., Online, In-Store)
