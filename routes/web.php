@@ -12,6 +12,10 @@ use App\Http\Controllers\PackingListController;
 use App\Livewire\Invoice\GenerateInvoice;
 use App\Livewire\PackingList\PackingListGenerate;
 use App\Livewire\PackingList\PackingListEdit;
+use App\Livewire\Invoice\ViewInvoices;
+use App\Livewire\Invoice\EditInvoice;
+use App\Livewire\Invoice\ShowInvoice;
+use App\Livewire\Invoice\ExportInvoice;
 
 // Dashboard Route
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
@@ -38,6 +42,13 @@ Route::prefix('packing-lists')->group(function () {
     Route::get('/{id}/export', [PackingListController::class, 'export'])->name('packing-lists.export');
 });
 
+
+Route::prefix('invoices')->group(function () {
+    Route::get('/', ViewInvoices::class)->name('invoices.index');
+    Route::get('/{id}/edit', EditInvoice::class)->name('invoices.edit');
+    // Route::get('/{id}', ShowInvoice::class)->name('invoices.show');
+    // Route::get('/{id}/export', ExportInvoice::class)->name('invoices.export');
+});
 Route::get('/invoice/generate',GenerateInvoice::class)->name('invoice.generate');
 
 Route::view('/', 'welcome');

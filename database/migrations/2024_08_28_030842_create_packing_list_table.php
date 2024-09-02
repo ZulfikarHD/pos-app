@@ -19,6 +19,8 @@ return new class extends Migration
                   ->onDelete('cascade'); // Foreign key to orders table
             $table->date('packing_date');
             $table->date('shipped_date')->nullable();
+            $table->string('shipping_status')->default('Pending');
+            $table->text('tracking_details')->nullable();
             $table->timestamps(); // created_at and updated_at columns
         });
     }
