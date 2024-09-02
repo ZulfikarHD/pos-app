@@ -16,6 +16,10 @@ use App\Livewire\Invoice\ViewInvoices;
 use App\Livewire\Invoice\EditInvoice;
 use App\Livewire\Invoice\ShowInvoice;
 use App\Livewire\Invoice\ExportInvoice;
+use App\Livewire\Revenue\RevenueDashboard;
+use App\Livewire\Revenue\AddRevenue;
+use App\Livewire\Revenue\RevenueReports;
+use App\Livewire\Revenue\ExportReports;
 
 // Dashboard Route
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
@@ -46,10 +50,20 @@ Route::prefix('packing-lists')->group(function () {
 Route::prefix('invoices')->group(function () {
     Route::get('/', ViewInvoices::class)->name('invoices.index');
     Route::get('/{id}/edit', EditInvoice::class)->name('invoices.edit');
-    // Route::get('/{id}', ShowInvoice::class)->name('invoices.show');
-    // Route::get('/{id}/export', ExportInvoice::class)->name('invoices.export');
+    Route::get('/{id}', ShowInvoice::class)->name('invoices.show');
+    Route::get('/{id}/export', ExportInvoice::class)->name('invoices.export');
 });
 Route::get('/invoice/generate',GenerateInvoice::class)->name('invoice.generate');
+
+// Revenue Overview Routes
+Route::get('/revenue-dashboard', RevenueDashboard::class)->name('revenue.dashboard');
+
+// Manage Revenue Routes
+Route::get('/revenue/add', AddRevenue::class)->name('revenue.add');
+Route::get('/revenue/reports', RevenueReports::class)->name('revenue.reports');
+
+// Export & Reports Routes
+Route::get('/revenue/export', ExportReports::class)->name('revenue.export');
 
 Route::view('/', 'welcome');
 
