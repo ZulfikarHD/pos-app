@@ -51,7 +51,7 @@ class Order extends Model
      */
     public function orderItems() : HasMany
     {
-        return $this->hasMany(OrderItem::class, 'order_id');
+        return $this->hasMany(OrderItem::class, 'order_id','order_id');
     }
 
     /**
@@ -61,7 +61,7 @@ class Order extends Model
      */
     public function invoice() : HasOne
     {
-        return $this->hasOne(Invoice::class, 'order_id');
+        return $this->hasOne(Invoice::class, 'order_id','order_id');
     }
 
     /**
@@ -71,6 +71,11 @@ class Order extends Model
      */
     public function packingList() : HasOne
     {
-        return $this->hasOne(PackingList::class, 'order_id');
+        return $this->hasOne(PackingList::class, 'order_id', 'order_id');
+    }
+
+    public function logs() : HasMany
+    {
+        return $this->hasMany(OrderLog::class);
     }
 }

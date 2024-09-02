@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PackingList extends Model
 {
@@ -19,6 +20,8 @@ class PackingList extends Model
         'order_id',
         'packing_date',
         'shipped_date',
+        'shipping_status',
+        'tracking_details'
     ];
 
     /**
@@ -28,6 +31,11 @@ class PackingList extends Model
      */
     public function order() : BelongsTo
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->belongsTo(Order::class, 'order_id', 'order_id');
     }
+
+    // public function items() : HasMany
+    // {
+    //     return $this->hasMany(PackingListItem::class);
+    // }
 }
