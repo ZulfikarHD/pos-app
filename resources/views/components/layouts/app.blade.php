@@ -18,7 +18,9 @@
 
 <body class="font-sans antialiased">
 	<div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-		<livewire:layout.navigation />
+		{{-- <livewire:layout.navigation /> --}}
+		{{-- <livewire:side-nav /> --}}
+        @include('components.layouts.side-nav')
 
 		<!-- Page Heading -->
 		@if (isset($header))
@@ -30,10 +32,13 @@
 		@endif
 
 		<!-- Page Content -->
-		<main>
+		<main class="lg:ml-64">
 			{{ $slot }}
 		</main>
 	</div>
+    <script>
+      lucide.createIcons();
+    </script>
 	@stack('scripts')
 </body>
 

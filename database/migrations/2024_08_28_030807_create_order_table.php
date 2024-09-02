@@ -19,7 +19,7 @@ return new class extends Migration
                   ->onDelete('cascade'); // Foreign key to customers table
             $table->foreignId('user_id')
                   ->constrained()
-                  ->references('user_id')
+                  ->references('id')
                   ->onDelete('cascade'); // Foreign key to users table
             $table->date('order_date');
             $table->enum('status', ['Draft', 'Pending', 'Completed'])->default('Draft');
